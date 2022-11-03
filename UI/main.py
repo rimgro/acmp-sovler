@@ -116,6 +116,8 @@ class Window(QMainWindow):
         start_button.setGeometry(451, 497, 349, 103)
         start_button.setStyleSheet("letter-spacing:2px;font-weight:lighter")
 
+        close_button.clicked.connect(self.closeApp)
+        minimize_button.clicked.connect(self.minimizeApp)
         start_button.show()
         chosen_exercise.show()
         answer_textfield.show()
@@ -123,9 +125,7 @@ class Window(QMainWindow):
         choose_exercise.show()
         exercises_label.show()
         close_button.show()
-        close_button.clicked.connect(self.closeApp)
         minimize_button.show()
-        minimize_button.clicked.connect(self.minimizeApp)
         clientsatus_label.show()
         errors_label.show()
         notfound_label.show()
