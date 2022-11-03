@@ -1,1 +1,1 @@
-# acmp-sovler бля че за хуйня
+# acmp-sovler прости римгро
