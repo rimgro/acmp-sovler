@@ -5,11 +5,12 @@ import colorama
 from selenium import webdriver
 import chromedriver_autoinstaller
 from selenium.webdriver.common.by import By
-import regex as re
 
-
+# основная либа проекта, здесь происходит авторизация и отправка решений
 class Driver:
     topic = ""
+
+    # установка драйвера и логин в систему
     def __init__(self, nickname, password):
         chromedriver_autoinstaller.install()
         self.driver = webdriver.Chrome()
@@ -18,14 +19,15 @@ class Driver:
         self.driver.find_element(By.XPATH, "/html/body/table/tbody/tr[1]/td/table/tbody/tr[3]/td[4]/form/nobr/b/input[2]").send_keys(password)
         self.driver.find_element(By.XPATH, "/html/body/table/tbody/tr[1]/td/table/tbody/tr[3]/td[4]/form/nobr/b/input[3]").click()
 
-
+    # устанавливаем тему
     def set_topic(self, link):
         self.topic = link
 
-    def solve_problem(self, link, filename):
+    # отправить решение задачи по ссылке
+    def send_solution(self, link, filename):
         if not self.driver: return
 
-        self.driver.get(problem)
+        self.driver.get(linkм)
 
         problem_text = self.driver.find_element(By.XPATH, "/html/body/table/tbody/tr[3]/td/table/tbody/tr/td[2]/table/tbody/tr/td[1]/table/tbody/tr[1]/td[3]").text
         problem_number = problem_text.join(i for i in problem_text if i.isdigit())
@@ -43,7 +45,9 @@ class Driver:
             self.driver.find_element(By.XPATH, "/html/body/table/tbody/tr[3]/td/table/tbody/tr/td[2]/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/form/input[2]").click()
             print("problem " + problem_number + " solution is sended")
 
+    # получаем список задач, если установлена тема через set_topic()
     def get_all_problems_in_topic(self):
+        if not self.topic: return []
         self.driver.get(self.topic)
         self.driver.implicitly_wait(3)
         elements = self.driver.find_elements(By.XPATH, "//a[@href]")

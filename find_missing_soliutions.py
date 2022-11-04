@@ -2,6 +2,8 @@ import glob
 import os
 import pickle
 
+# чисто для себя приколы
+
 SOLUTION_MASK = "solutions/*.cpp"
 
 solved = [int(os.path.basename(os.path.splitext(x)[0])) for x in glob.glob(os.path.abspath(SOLUTION_MASK))]

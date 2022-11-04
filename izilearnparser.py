@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 from lxml import html
 
 
+# должен парсить, но оно этого не делает
+
 SEARCH_URL = "https://izilearn.ru/index.php?r=acmp%2Findex&AcmpSearch%5Bname%5D=&AcmpSearch%5Bnumber%5D="
 missing = pickle.load(open("missing_solutions", "rb"))
 

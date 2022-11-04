@@ -1,3 +1,4 @@
+# не работает, консольный интерфейс для программы
 from main import Driver
 
 # colorama.init()
